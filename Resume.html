@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krishnakumar - Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 950px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.3);
+            border-radius: 10px;
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        header {
+            text-align: center;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 25px;
+            margin-bottom: 35px;
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+        }
+        
+        h1 {
+            font-size: 3em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+        
+        .contact-info {
+            font-size: 0.95em;
+            color: #555;
+            margin: 10px 0;
+        }
+        
+        .contact-info a {
+            color: #667eea;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .contact-info a:hover {
+            color: #764ba2;
+            transform: translateY(-2px);
+        }
+        
+        .contact-info a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+        
+        .contact-info a:hover::after {
+            width: 100%;
+        }
+        
+        h2 {
+            color: #2c3e50;
+            font-size: 1.6em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 5px solid #667eea;
+            position: relative;
+            font-weight: 600;
+        }
+        
+        h2::before {
+            content: '';
+            position: absolute;
+            left: -5px;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+        
+        .objective {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 20px;
+            border-radius: 10px;
+            font-style: italic;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .objective:hover {
+            transform: translateX(5px);
+        }
+        
+        .job, .project {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .job:hover, .project:hover {
+            background: #fff;
+            border-left: 3px solid #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .job-title {
+            font-weight: 700;
+            font-size: 1.15em;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .job-date {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            background: #e8eaf6;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-weight: 500;
+        }
+        
+        .company {
+            color: #667eea;
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        
+        .company a {
+            color: #667eea;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .company a:hover {
+            color: #764ba2;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-top: 10px;
+        }
+        
+        li {
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 10px;
+        }
+        
+        li::marker {
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 15px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: default;
+            box-shadow: 0 2px 5px rgba(102, 126, 234, 0.3);
+        }
+        
+        .skill-tag:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.5);
+        }
+        
+        .education-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 3px solid #667eea;
+        }
+        
+        .degree {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 1.05em;
+            margin-bottom: 5px;
+        }
+        
+        .certification {
+            margin-bottom: 15px;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .certification:hover {
+            background: #fff;
+            border-left: 3px solid #667eea;
+            transform: translateX(5px);
+            box-shadow: 0 3px 10px rgba(102, 126, 234, 0.2);
+        }
+        
+        .certification strong {
+            color: #2c3e50;
+        }
+        
+        .certification a {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s ease;
+        }
+        
+        .certification a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+        
+        .visitor-counter {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(102, 126, 234, 0.6);
+            }
+        }
+        
+        .visitor-counter p {
+            font-size: 1.2em;
+            color: white;
+            font-weight: 500;
+        }
+        
+        #visitor-count {
+            font-weight: 700;
+            color: #fff;
+            font-size: 1.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            display: inline-block;
+            padding: 5px 15px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            margin-left: 5px;
+        }
+        
+        /* Scroll animations */
+        section {
+            animation: slideIn 0.6s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Mobile responsive */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 10px;
+            }
+            
+            .container {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2.2em;
+            }
+            
+            h2 {
+                font-size: 1.4em;
+            }
+            
+            .job-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .contact-info a {
+                display: inline-block;
+                margin: 5px 5px;
+            }
+            
+            .skills {
+                gap: 8px;
+            }
+            
+            .skill-tag {
+                font-size: 0.8em;
+                padding: 6px 12px;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+            
+            .visitor-counter {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Krishnakumar</h1>
+            <div class="contact-info">
+                Coimbatore, India
+            </div>
+            <div class="contact-info">
+                <a href="mailto:krishnakumar2kr@gmail.com">📧 krishnakumar2kr@gmail.com</a> |
+                <a href="https://wa.me/+919524833639">📱 +91 9524833639</a>
+            </div>
+            <div class="contact-info">
+                <a href="http://www.linkedin.com/in/krishnakumarmunusamy" target="_blank">💼 LinkedIn</a> |
+                <a href="https://github.com/Krishnakumar-36" target="_blank">💻 GitHub</a>
+            </div>
+        </header>
+
+        <section>
+            <h2>OBJECTIVE</h2>
+            <div class="objective">
+                I am a passionate professional with 3 years of corporate expertise. I work closely with clients in developing strong brand identities that define and exhibit values, and I am eager to learn new technologies to implement knowledge. I am a strong team player and a social butterfly.
+            </div>
+        </section>
+
+        <section>
+            <h2>WORK EXPERIENCE</h2>
+            
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Java Full Stack Developer - Intern</span>
+                    <span class="job-date">Oct 2024 - Present</span>
+                </div>
+                <div class="company">UNIQ Solutions | Coimbatore, India</div>
+                <ul>
+                    <li>Developed and maintained full-stack web applications using Java (Spring Boot) for backend APIs and dynamic frontend interfaces, improving user engagement and performance</li>
+                    <li>Implemented RESTful APIs and integrated MySQL databases, streamlining data handling and increasing backend efficiency by 30%</li>
+                    <li>Leveraged design patterns (e.g., MVC, Singleton) and object-oriented principles to build clean, maintainable, and scalable application architecture</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Android Developer - Intern</span>
+                    <span class="job-date">Jan 2024 - Sep 2024</span>
+                </div>
+                <div class="company">Avodha Edutech Pvt Ltd | Kochi, India</div>
+                <ul>
+                    <li>Developed and deployed robust Android applications using Java/Kotlin, contributing to app downloads and increase in user engagement</li>
+                    <li>Proficient in UI/UX design principles and Material Design guidelines, ensuring intuitive and visually appealing user interfaces</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Senior Representative</span>
+                    <span class="job-date">Dec 2019 - Sep 2022</span>
+                </div>
+                <div class="company">NTT DATA Information Processing Service Pvt Ltd | Coimbatore, India</div>
+                <ul>
+                    <li>Proficient in claim adjudication processes, ensuring accurate review and evaluation of insurance claims according to policy terms and guidelines</li>
+                    <li>Experienced in identifying discrepancies, resolving claim issues, and communicating outcomes effectively to stakeholders</li>
+                    <li>Skilled in maintaining high levels of accuracy, productivity, and customer satisfaction through efficient handling of claims and timely decision-making</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Web Design & Developer - Intern</span>
+                    <span class="job-date">Dec 2018 - Mar 2019</span>
+                </div>
+                <div class="company">Accent Techno Soft | Coimbatore, India</div>
+                <ul>
+                    <li>Developed responsive front-end components using HTML, CSS, and JavaScript, and integrated RESTful APIs with backend services using PHP and MySQL to enhance functionality and user experience</li>
+                    <li>Collaborated with team members on troubleshooting, code reviews, and performance optimization in an agile development environment</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <div class="job-header">
+                    <span class="job-title">Freelance Tutor</span>
+                    <span class="job-date">Nov 2018 - Jan 2019</span>
+                </div>
+                <div class="company">Focus Edumatics Pvt Ltd | Coimbatore, India</div>
+                <ul>
+                    <li>Conducted interactive online tutoring sessions for K-12 students, delivering personalized instruction and feedback based on individual grade levels, learning needs, and academic goals</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>PROJECTS</h2>
+            
+            <div class="project">
+                <div class="job-title">Digital Online Repository System</div>
+                <div class="company"><a href="https://github.com/Krishnakumar-36" target="_blank">View on GitHub</a></div>
+                <ul>
+                    <li>Developed a PHP and MySQL-based digital online repository system that efficiently manages and stores various types of digital content</li>
+                    <li>Integrated advanced search capabilities, leveraging metadata and content keywords, to facilitate efficient retrieval of digital assets</li>
+                    <li>Implemented search capabilities to allow users to easily locate and retrieve digital assets based on metadata and content keywords, enhancing usability and efficiency</li>
+                </ul>
+            </div>
+        </section>
+
+        <section>
+            <h2>EDUCATION</h2>
+            
+            <div class="education-item">
+                <div class="degree">Bachelor of Science (B.Sc.) - Computer Technology</div>
+                <div>Sri Krishna Adithya College of Arts & Science, Coimbatore, India</div>
+                <div class="job-date">June 2016 - May 2019</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>CERTIFICATIONS</h2>
+            
+            <div class="certification">
+                <strong>GitHub Administration - GitHub (Microsoft)</strong><br>
+                <a href="https://learn.microsoft.com/en-us/users/krishnakumar-8729/achievements/w7mxguyn" target="_blank">View Credentials →</a>
+            </div>
+            
+            <div class="certification">
+                <strong>Describe Types of Source Control Systems - DevOps (Microsoft)</strong><br>
+                <a href="https://learn.microsoft.com/api/achievements/share/en-us/Krishnakumar-8729/7PTPT27Z?sharingId=BC6334F9E21B23FA" target="_blank">View Credentials →</a>
+            </div>
+            
+            <div class="certification">
+                <strong>Secure MySQL - MySQL (Microsoft)</strong><br>
+                <a href="https://learn.microsoft.com/api/achievements/share/en-us/Krishnakumar-8729/W7EQ6GMN?sharingId=BC6334F9E21B23FA" target="_blank">View Credentials →</a>
+            </div>
+        </section>
+
+        <section>
+            <h2>SKILLS</h2>
+            <div class="skills">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Kotlin</span>
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">Android SDK</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">PHP</span>
+                <span class="skill-tag">MySQL</span>
+                <span class="skill-tag">RESTful APIs</span>
+                <span class="skill-tag">JDBC</span>
+                <span class="skill-tag">jQuery</span>
+                <span class="skill-tag">FastAPI</span>
+                <span class="skill-tag">Linux</span>
+                <span class="skill-tag">Git/GitHub</span>
+                <span class="skill-tag">GitHub Actions</span>
+                <span class="skill-tag">UI/UX Design</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Team Leadership</span>
+                <span class="skill-tag">Project Management</span>
+            </div>
+        </section>
+
+        <div class="visitor-counter">
+            <p>👁️ Visitor Count: <span id="visitor-count">Loading...</span></p>
+        </div>
+    </div>
+
+    <script>
+        // This will connect to your API Gateway once you set it up in Step 7
+        // Replace 'YOUR-API-GATEWAY-URL' with your actual API endpoint
+        /*
+        fetch('YOUR-API-GATEWAY-URL/counter')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('visitor-count').innerText = data.count;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('visitor-count').innerText = 'Error loading count';
+            });
+        */
+        
+        // Temporary placeholder until API is set up
+        document.getElementById('visitor-count').innerText = '---';
+    </script>
+</body>
+</html>
